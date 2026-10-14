@@ -25,10 +25,12 @@ claude plugin install workflow@claude-workflow
 ```
 
 This installs at user scope: the skills are available in every project on the machine, as
-`/workflow:<skill>`. To update later:
+`/workflow:<skill>`. To update later, refresh the marketplace, update the plugin, then restart
+Claude Code:
 
 ```sh
 claude plugin marketplace update claude-workflow
+claude plugin update workflow@claude-workflow
 ```
 
 **On a work or enterprise account**, check first that your organization's managed settings allow

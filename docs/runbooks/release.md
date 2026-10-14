@@ -1,7 +1,7 @@
 # Release a new plugin version
 
 **Use when:** a merged change to `plugins/workflow/` should reach installed users
-**Last verified:** 2026-10-13 (task 001, v0.1.0)
+**Last verified:** 2026-10-13 (task 002, v0.1.1)
 
 ## Prerequisites
 - Claude Code CLI on PATH; push access to github.com/PatrickSouthern/claude-workflow
@@ -21,10 +21,11 @@ CHANGELOG entry are reviewed with the change. Step 6 runs on `main` after the me
 6. After the merge, on `main`: tag `v<version>`; push `main` and the tag (user's OK).
 
 ## Check it worked
-- `claude plugin marketplace update claude-workflow`, then `claude plugin details workflow` shows the
-  new version.
+- `claude plugin marketplace update claude-workflow`, then `claude plugin update workflow@claude-workflow`
+  — expect: `Plugin "workflow" updated from <old> to <new>`. `claude plugin details workflow` shows
+  the new version. Restart Claude Code to use it.
 
 ## Known problems
 | Symptom | Cause | Fix |
 |---|---|---|
-| | | |
+| Installed plugin stays on the old version | `marketplace update` only refreshes the catalog | Also run `claude plugin update workflow@claude-workflow` |
