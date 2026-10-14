@@ -62,6 +62,9 @@ Replace `{{DATE}}` with today's date, `{{PLUGIN_VERSION}}` with the plugin's ver
 Use the `**/<folder>/**` form for deny rules so they also match inside worktrees, and warn that no
 folder in the project may share a denied folder's name.
 
+Claude Code asks the user before any write under `.claude/`. Tell the user that prompt is coming
+and why; if it is declined, show the intended `settings.json` content and leave it for the user.
+
 ## 4. Check and report
 
 - Show `git status` and `git diff --stat`, and the merged `.claude/settings.json`.
