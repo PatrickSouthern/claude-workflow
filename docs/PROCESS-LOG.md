@@ -14,3 +14,6 @@ workflow plugin.
 | 2026-10-13 | 001 retro | Trial fixtures use only inert data; known trial failures recorded | runbook (`run-setup-trials.md`) | No trial failure traced to the fixture in later tasks | |
 | 2026-10-13 | 001 retro | Setup warns about the `.claude/` write prompt and shows the content if declined; trials check the proposal | skill (`setup`) + script (`trial-setup.sh`) | Setup in a real project gets `settings.json` written after one approval | |
 | 2026-10-13 | 001 | Setup trials as a script with 15 checks, run before every release | script + runbook | Every change to `setup` has a passing trial run in its task's Verification | |
+| 2026-10-13 | 002 | Corrects the 001-retro row above: `setup` and the README describe `.claude/` as a protected path whose prompt depends on the permission mode | skill (`setup`) + README | Users aren't surprised by a prompt, or by its absence | |
+| 2026-10-13 | 002 | Version bump and CHANGELOG reviewed in the task branch; tag and push after merge | runbook (`release.md`) | Every release's version bump appears in a reviewed task diff | |
+| 2026-10-13 | 002 retro | Trials run with output to a file and the exit code quoted, never piped | runbook (`run-setup-trials.md`) | Trial evidence in later tasks always quotes `exit=` | |

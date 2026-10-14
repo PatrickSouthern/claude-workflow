@@ -8,10 +8,12 @@
 - Git Bash (or any POSIX `sh`)
 
 ## Steps
-1. `sh tools/trial-setup.sh <scratch dir> fresh` — expect: every line `ok`, exit 0
-2. `sh tools/trial-setup.sh <scratch dir> existing` — expect: every line `ok`, exit 0
+1. `sh tools/trial-setup.sh <scratch dir> fresh > <scratch dir>/summary-fresh.txt; echo "exit=$?"`
+   — expect: `exit=0`, and every line of the summary `ok`
+2. The same with `existing` — expect: `exit=0`, every line `ok`
    Use a scratch directory outside the repo (for example the session scratchpad). Each run takes
-   about a minute and uses a headless Claude session.
+   about a minute and uses a headless Claude session. Don't pipe the script into `tail` or `grep`:
+   the pipe hides its exit code. Quote `exit=` in the evidence.
 
 ## Check it worked
 - Both runs exit 0. On a failure, read `<scratch dir>/claude-<kind>.txt` for what the session did,
@@ -20,6 +22,6 @@
 ## Known problems
 | Symptom | Cause | Fix |
 |---|---|---|
-| `.claude/settings.json` not written | Claude Code asks a human before writes under `.claude/`; headless runs can't approve | Expected. The script checks the session proposed the content instead |
+| `.claude/settings.json` not written | `.claude/` is a protected path: in `acceptEdits` mode its writes need a prompt, which a headless run can't show; allow rules don't help ([docs](https://code.claude.com/docs/en/permission-modes#protected-paths)) | Expected. The script checks the session proposed the content instead |
 | Trial session fails with a model error | A trial `settings.json` set a real key (`model`) to a fake value | Use only harmless keys (`env`) in trial fixtures |
 | `--allowedTools Write(...)` ignored | Only `Edit(path)` rules apply to file writes | Use `Edit(path)` |

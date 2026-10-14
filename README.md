@@ -31,10 +31,10 @@ This installs at user scope: the skills are available in every project on the ma
 claude plugin marketplace update claude-workflow
 ```
 
-**On a work or enterprise account**, check first that your organisation's managed settings allow
-third-party marketplaces ([plugin policy for organisations](https://code.claude.com/docs/en/plugins/org)).
+**On a work or enterprise account**, check first that your organization's managed settings allow
+third-party marketplaces ([plugin policy for organizations](https://code.claude.com/docs/en/plugins/org)).
 If they don't, the files under `plugins/workflow/` can be copied into a project's `.claude/skills/`
-by hand, or the repo mirrored into your organisation's own marketplace.
+by hand, or the repo mirrored into your organization's own marketplace.
 
 ## Set up a project
 
@@ -55,7 +55,7 @@ and `node_modules/` for a .NET and React app), then writes:
 | `docs/tasks/BACKLOG.md` | Follow-ups found during tasks, each with its source and when to pick it up |
 | `docs/PROCESS-LOG.md` | Every change to the way of working, with how we'll know it worked |
 | `docs/runbooks/` | How recurring operations (deploy, migrations, releases) last worked |
-| `.claude/settings.json` | `worktree.baseRef: "head"` and read-deny rules for generated folders (merged into existing settings; Claude Code asks you to approve this write) |
+| `.claude/settings.json` | `worktree.baseRef: "head"` and read-deny rules for generated folders (merged into existing settings; depending on your permission mode, Claude Code may ask you to approve this write) |
 | `.gitignore` | `/.claude/worktrees/` |
 
 Then start a new session (so the settings apply) and plan the first task with `/workflow:task`.
@@ -216,8 +216,10 @@ push Windows past its 260-character path limit.
 - **Settings changed inside a worktree apply only after the merge.** A session keeps the settings of
   the checkout it started in. Make such checks post-merge criteria.
 - **Skills, unlike settings, are picked up mid-session**, including skills added in a worktree.
-- **Claude Code asks a human before writes under `.claude/`**, even with allow rules; headless runs
-  can't write there.
+- **The project's `.claude/` folder is a protected path**, and allow rules don't pre-approve writes
+  to it. Manual and `acceptEdits` modes ask first; `auto` mode lets its classifier decide, so it may
+  write without asking; `dontAsk` refuses. A headless `acceptEdits` run can't write there at all.
+  ([Protected paths](https://code.claude.com/docs/en/permission-modes#protected-paths))
 - **A crashed session leaves its worktree locked.** If the locking process no longer exists, the lock
   is stale and `git worktree remove -f -f` is safe once the branch is merged.
 - **Worktree removal can end in "Permission denied" on Windows.** Git has already unregistered and
