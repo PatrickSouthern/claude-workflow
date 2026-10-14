@@ -1,8 +1,8 @@
 # 001 — Workflow plugin v0.1
 
-**Status:** Awaiting review — merged (`5908420`), released as v0.1.0 and installed from GitHub; 4 keeps one manual check
+**Status:** Awaiting review — merged (`5908420`), released as v0.1.0, installed from GitHub; all 8 criteria verified
 **Last updated:** 2026-10-13
-**Next step:** User marks Done (the interactive settings write is checked at the first real setup)
+**Next step:** User marks Done; Retro item 4 (wrong claim about `.claude/` prompts) goes to a 0.1.1 patch task
 **Blockers:** none (Claude Code CLI 2.1.296 on PATH since 2026-10-13)
 **Worktree:** none (bootstrap task: branch `task-001-plugin-v0-1`; see Decisions)
 
@@ -125,16 +125,16 @@ about the pattern land here.
 | 1. Valid plugin and marketplace | ✅ | `claude plugin validate --strict ./plugins/workflow` and `--strict .`: `✔ Validation passed`, exit 0, both |
 | 2. Installs from the local marketplace | ✅ | `✔ Successfully added marketplace: claude-workflow (declared in user settings)`; `✔ Successfully installed plugin: workflow@claude-workflow (scope: user)`; `claude plugin details workflow`: `workflow 0.1.0`, `Skills (6)  close-task, finish-task, merge-task, review-process, setup, task`; always-on cost about 600 tokens |
 | 3. Stack-neutral and namespaced | ✅ | `grep -i "unity\|snowvibes" plugins/workflow`: one hit, the Unity row of setup's defaults table (one example among four stacks). Bare backticked skill names: only setup's list of local `.claude/skills/` folder names to look for; every cross-reference is `workflow:<name>` |
-| 4. Setup works on a fresh project | ⚠️ | `tools/trial-setup.sh … fresh`: 12/12 `ok`, exit 0 (four files identical to templates, roadmap, process-log setup row, How we work, 49 lines, no placeholders, worktrees ignored, nothing committed). `.claude/settings.json` is proposed, not written, in a headless run: see Needs manual check |
+| 4. Setup works on a fresh project | ✅ | Manual check passed: interactive `/workflow:setup` wrote `.claude/settings.json` (user, 2026-10-13). Headless trial: | `tools/trial-setup.sh … fresh`: 12/12 `ok`, exit 0 (four files identical to templates, roadmap, process-log setup row, How we work, 49 lines, no placeholders, worktrees ignored, nothing committed). `.claude/settings.json` is proposed, not written, in a headless run: see Needs manual check |
 | 5. Safe on an existing project | ✅ | `tools/trial-setup.sh … existing`: 15/15 `ok`, exit 0: tracked files additions only (`git diff --numstat` has no deletions), `## Conventions` and "Keep this line." kept, existing `settings.json` untouched; proposed merge kept `allow`, `env`, the existing `bin` deny, and added `obj`, `node_modules`, `baseRef` |
 | 6. Repo uses its own workflow | ✅ | `CLAUDE.md` (How we work + this repo's specifics), `docs/ROADMAP.md`, `docs/tasks/_TEMPLATE.md`, `BACKLOG.md`, `docs/PROCESS-LOG.md` (setup row), `docs/runbooks/` written by `/workflow:setup` run on this repo; two runbooks added (trials, release) |
 | 7. README is the guide | ✅ | Sections: install (incl. work accounts), set up a project, the skills, lifecycle (mermaid), status block, criteria, roadmap and backlog, runbooks, how the process improves itself (with sources), worktrees, gotchas, personal rules, developing, license. Skill names, setup's file list and the template content match the files in `plugins/workflow/` |
 | 8. Published | ✅ | `main` and tag `v0.1.0` pushed (`refs/tags/v0.1.0^{}` = `5908420`). Local marketplace removed, then `claude plugin marketplace add PatrickSouthern/claude-workflow`: "Cloning via HTTPS … ✔ Successfully added marketplace"; `✔ Successfully installed plugin: workflow@claude-workflow (scope: user)`; `marketplace list`: `Source: GitHub (PatrickSouthern/claude-workflow)`; `details`: `workflow 0.1.0`, Skills (6) |
 
 **Needs manual check:**
-- In a real interactive session in a new project, run `/workflow:setup` and approve the
-  `.claude/settings.json` write when Claude Code asks: the file should then contain the deny rules
-  and `worktree.baseRef: "head"`. (Natural moment: the first time you set up a work project.)
+- ✅ 2026-10-13, by the user: `/workflow:setup` in a real interactive session wrote
+  `.claude/settings.json`. It did **not** ask for permission first (see Retro item 4: the docs claim
+  a prompt always comes).
 
 ## Retro
 
@@ -143,6 +143,7 @@ about the pattern land here.
 | Two trial runs failed because of my test fixture (a real settings key used as a fake marker; a `Write(...)` allow rule that isn't honoured), not because of the plugin | Trial fixtures use only inert data; the known failures are recorded | runbook (`run-setup-trials.md` Known problems) | No trial failure traced to the fixture in later tasks | applied |
 | Writes under `.claude/` need a human even with allow rules, which headless tests can't give | `setup` warns the user the prompt is coming and shows the content if declined; the trial checks the proposal; README gotcha | skill (`setup` step 3) + script (`trial-setup.sh`) | Setup in a real project gets `settings.json` written after one approval | applied |
 | The trial script has no negative test: it has never been shown to fail on a broken `setup` | Add a check-only mode and a deliberate-failure run | script | A run against a deliberately broken template prints `FAIL` and exits 1 | → follow-up |
+| I generalised from one headless run (`acceptEdits`) to "Claude Code always asks before writes under `.claude/`"; the user's interactive run wrote without asking. Claims about tool behaviour need evidence from each mode they cover | Reword in `setup` step 3, README (setup table and gotcha), `trial-setup.sh` comment: whether a prompt appears depends on the permission mode; headless `acceptEdits` runs can't write there. Release as 0.1.1 | skill + README + script | Docs state only observed behaviour, with the mode named | proposed (found after merge: a patch task) |
 
 ## Follow-ups
 - Trial script negative test (Retro item 3): a `--check-only` mode, and a deliberate-failure run.
