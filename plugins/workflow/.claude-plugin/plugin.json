@@ -1,0 +1,11 @@
+{
+  "name": "workflow",
+  "description": "Plan, approve, implement in worktrees, verify with evidence, and improve the process from every task.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Patrick Southern"
+  },
+  "homepage": "https://github.com/PatrickSouthern/claude-workflow",
+  "repository": "https://github.com/PatrickSouthern/claude-workflow",
+  "license": "MIT"
+}
