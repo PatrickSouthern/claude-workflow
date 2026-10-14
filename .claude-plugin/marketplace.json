@@ -1,0 +1,14 @@
+{
+  "name": "claude-workflow",
+  "description": "A self-improving task workflow for Claude Code: roadmap, task files, backlog, runbooks, process log, worktrees.",
+  "owner": {
+    "name": "Patrick Southern"
+  },
+  "plugins": [
+    {
+      "name": "workflow",
+      "source": "./plugins/workflow",
+      "description": "Plan, approve, implement in worktrees, verify with evidence, and improve the process from every task."
+    }
+  ]
+}
