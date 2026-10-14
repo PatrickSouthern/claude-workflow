@@ -6,10 +6,6 @@ them to Closed with the task number.
 
 ## Open
 
-- [ ] **B1 — Correct the `.claude/` permission-prompt claim (0.1.1)** · from 001 retro · when: next task
-  `setup` step 3, the README (setup table and gotcha) and the `trial-setup.sh` comment say Claude Code
-  always asks before writes under `.claude/`. An interactive run wrote without asking; headless
-  `acceptEdits` runs can't write there. Say it depends on the permission mode; release as 0.1.1.
 - [ ] **B2 — Negative test for the setup trials** · from 001 retro · when: the next change to `setup`'s behavior
   Add a `--check-only` mode to `tools/trial-setup.sh` and a deliberate-failure run that must print
   `FAIL` and exit 1.
@@ -21,3 +17,6 @@ them to Closed with the task number.
   keeps the grep-able format.
 
 ## Closed
+
+- [x] **B1 — Correct the `.claude/` permission-prompt claim (0.1.1)** · from 001 retro · closed by 002
+  The `.claude/` folder is described as a protected path whose prompt depends on the permission mode.
