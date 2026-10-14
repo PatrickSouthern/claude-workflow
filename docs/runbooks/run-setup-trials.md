@@ -20,6 +20,6 @@
 ## Known problems
 | Symptom | Cause | Fix |
 |---|---|---|
-| `.claude/settings.json` not written | Claude Code asks a human before writes under `.claude/`; headless runs can't approve | Expected. The script checks the session proposed the content instead |
+| `.claude/settings.json` not written | `.claude/` is a protected path: in `acceptEdits` mode its writes need a prompt, which a headless run can't show; allow rules don't help ([docs](https://code.claude.com/docs/en/permission-modes#protected-paths)) | Expected. The script checks the session proposed the content instead |
 | Trial session fails with a model error | A trial `settings.json` set a real key (`model`) to a fake value | Use only harmless keys (`env`) in trial fixtures |
 | `--allowedTools Write(...)` ignored | Only `Edit(path)` rules apply to file writes | Use `Edit(path)` |

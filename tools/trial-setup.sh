@@ -6,8 +6,9 @@
 #   existing  the same, plus a CLAUDE.md, .claude/settings.json and .gitignore that must be kept
 #
 # Writes the session output to <work dir>/claude-<kind>.txt and prints a summary. Exit code 0 means
-# every check passed. Claude Code asks a human before writes under .claude/, so a headless run cannot
-# write .claude/settings.json; the session prints the intended content instead (checked below).
+# every check passed. The project's .claude/ is a protected path: in acceptEdits mode a write there
+# needs a prompt, which a headless run can't show, so the session prints the intended
+# settings.json content instead (checked below). Allow rules don't pre-approve protected paths.
 set -e
 here="$(cd "$(dirname "$0")/.." && pwd)"
 plugin="$here/plugins/workflow"

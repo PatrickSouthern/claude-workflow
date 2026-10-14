@@ -62,8 +62,11 @@ Replace `{{DATE}}` with today's date, `{{PLUGIN_VERSION}}` with the plugin's ver
 Use the `**/<folder>/**` form for deny rules so they also match inside worktrees, and warn that no
 folder in the project may share a denied folder's name.
 
-Claude Code asks the user before any write under `.claude/`. Tell the user that prompt is coming
-and why; if it is declined, show the intended `settings.json` content and leave it for the user.
+The project's `.claude/` folder is a protected path: whether Claude Code asks before writing
+`settings.json` depends on the permission mode. Manual (`default`) and `acceptEdits` ask the user;
+`auto` lets its classifier decide, so it may go ahead without asking; `dontAsk` refuses. Allow rules
+don't change this. Say what you are about to write and why; if the write is refused or declined,
+show the intended `settings.json` content and leave it for the user.
 
 ## 4. Check and report
 
