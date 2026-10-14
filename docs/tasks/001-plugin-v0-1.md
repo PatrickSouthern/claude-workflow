@@ -1,8 +1,8 @@
 # 001 — Workflow plugin v0.1
 
-**Status:** Awaiting review — merged (`5908420`), released as v0.1.0, installed from GitHub; all 8 criteria verified
+**Status:** Done — approved by user 2026-10-13; open follow-ups moved to BACKLOG.md
 **Last updated:** 2026-10-13
-**Next step:** User marks Done; Retro item 4 (wrong claim about `.claude/` prompts) goes to a 0.1.1 patch task
+**Next step:** none
 **Blockers:** none (Claude Code CLI 2.1.296 on PATH since 2026-10-13)
 **Worktree:** none (bootstrap task: branch `task-001-plugin-v0-1`; see Decisions)
 
@@ -142,16 +142,16 @@ about the pattern land here.
 |---|---|---|---|---|
 | Two trial runs failed because of my test fixture (a real settings key used as a fake marker; a `Write(...)` allow rule that isn't honoured), not because of the plugin | Trial fixtures use only inert data; the known failures are recorded | runbook (`run-setup-trials.md` Known problems) | No trial failure traced to the fixture in later tasks | applied |
 | Writes under `.claude/` need a human even with allow rules, which headless tests can't give | `setup` warns the user the prompt is coming and shows the content if declined; the trial checks the proposal; README gotcha | skill (`setup` step 3) + script (`trial-setup.sh`) | Setup in a real project gets `settings.json` written after one approval | applied |
-| The trial script has no negative test: it has never been shown to fail on a broken `setup` | Add a check-only mode and a deliberate-failure run | script | A run against a deliberately broken template prints `FAIL` and exits 1 | → follow-up |
-| I generalised from one headless run (`acceptEdits`) to "Claude Code always asks before writes under `.claude/`"; the user's interactive run wrote without asking. Claims about tool behaviour need evidence from each mode they cover | Reword in `setup` step 3, README (setup table and gotcha), `trial-setup.sh` comment: whether a prompt appears depends on the permission mode; headless `acceptEdits` runs can't write there. Release as 0.1.1 | skill + README + script | Docs state only observed behaviour, with the mode named | proposed (found after merge: a patch task) |
+| The trial script has no negative test: it has never been shown to fail on a broken `setup` | Add a check-only mode and a deliberate-failure run | script | A run against a deliberately broken template prints `FAIL` and exits 1 | → backlog B2 |
+| I generalised from one headless run (`acceptEdits`) to "Claude Code always asks before writes under `.claude/`"; the user's interactive run wrote without asking. Claims about tool behaviour need evidence from each mode they cover | Reword in `setup` step 3, README (setup table and gotcha), `trial-setup.sh` comment: whether a prompt appears depends on the permission mode; headless `acceptEdits` runs can't write there. Release as 0.1.1 | skill + README + script | Docs state only observed behaviour, with the mode named | → backlog B1 |
 
 ## Follow-ups
 - Trial script negative test (Retro item 3): a `--check-only` mode, and a deliberate-failure run.
-  When: next change to `setup`.
+  When: next change to `setup`. → backlog B2
 - Plugin evals: `claude plugin eval` can score whether the skills change Claude's behaviour (for
   example, that `finish-task` never marks ✅ without evidence). When: after a few real tasks give
-  cases to test.
+  cases to test. → backlog B3
 - Hooks: candidates for the top of the mechanism ladder, such as a check that every task file's
-  status line keeps the grep-able format. When: the first process review.
+  status line keeps the grep-able format. When: the first process review. → backlog B4
 - SnowVibes switch (tracked in SnowVibes' roadmap): install the plugin there and remove its local
-  copies of the workflow skills, which now run alongside the plugin's.
+  copies of the workflow skills, which now run alongside the plugin's. → SnowVibes roadmap

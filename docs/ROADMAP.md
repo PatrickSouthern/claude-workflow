@@ -15,7 +15,8 @@ Goal: a project where Claude can make changes and prove they work, without the u
 
 | # | Task | Status |
 |---|---|---|
-| 001 | [Workflow plugin v0.1](tasks/001-plugin-v0-1.md): plugin, marketplace, setup skill, README; validated and published | Awaiting review (released v0.1.0) |
+| 001 | [Workflow plugin v0.1](tasks/001-plugin-v0-1.md): plugin, marketplace, setup skill, README; validated and published | Done |
+| — | 0.1.1 patch: correct the `.claude/` permission-prompt claim (B1) | Not started |
 | — | Process review for Phase 0 | Not started |
 
 ## Later phases
