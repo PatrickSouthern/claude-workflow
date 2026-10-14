@@ -1,8 +1,8 @@
 # 001 — Workflow plugin v0.1
 
-**Status:** Awaiting review — criteria 1–3 and 5–7 verified; 4 partial (interactive settings write is a manual check); 8 after merge
+**Status:** Awaiting review — merged (`5908420`), released as v0.1.0 and installed from GitHub; 4 keeps one manual check
 **Last updated:** 2026-10-13
-**Next step:** User review; on "merge", run workflow:merge-task (merge branch, push, tag v0.1.0, install from GitHub, delete the claude.ai doc)
+**Next step:** User marks Done (the interactive settings write is checked at the first real setup)
 **Blockers:** none (Claude Code CLI 2.1.296 on PATH since 2026-10-13)
 **Worktree:** none (bootstrap task: branch `task-001-plugin-v0-1`; see Decisions)
 
@@ -65,7 +65,7 @@ about the pattern land here.
 - [x] 4. Run setup on this repo itself (criterion 6), on a branch.
 - [x] 5. Write README (the guide, moved from the claude.ai doc and updated), CHANGELOG, LICENSE.
 - [x] 6. Validate, install locally, and run the setup trials in scratch repos (criteria 1–5).
-- [ ] 7. Hand off following `finish-task`; after "merge", push, tag `v0.1.0`, install from GitHub
+- [x] 7. Hand off following `finish-task`; after "merge", push, tag `v0.1.0`, install from GitHub
       (criterion 8), and delete the claude.ai guide doc (the README replaces it).
 
 ## Decisions
@@ -113,6 +113,10 @@ about the pattern land here.
   `.claude/settings.json` written by this session from the content it proposed.
 - Local install: marketplace added from the repo path; `workflow@claude-workflow` installed at user
   scope. Side effect: SnowVibes now sees its local workflow skills and the plugin's (see Follow-ups).
+- Merge (following `merge-task`): retro items logged in `PROCESS-LOG.md`; `--no-ff` merge
+  `5908420`; release runbook followed for the first time (tag, push); marketplace switched to the
+  GitHub source and the plugin reinstalled; task branch deleted; the claude.ai guide doc deleted
+  (the README replaces it).
 
 ## Verification
 
@@ -125,7 +129,7 @@ about the pattern land here.
 | 5. Safe on an existing project | ✅ | `tools/trial-setup.sh … existing`: 15/15 `ok`, exit 0: tracked files additions only (`git diff --numstat` has no deletions), `## Conventions` and "Keep this line." kept, existing `settings.json` untouched; proposed merge kept `allow`, `env`, the existing `bin` deny, and added `obj`, `node_modules`, `baseRef` |
 | 6. Repo uses its own workflow | ✅ | `CLAUDE.md` (How we work + this repo's specifics), `docs/ROADMAP.md`, `docs/tasks/_TEMPLATE.md`, `BACKLOG.md`, `docs/PROCESS-LOG.md` (setup row), `docs/runbooks/` written by `/workflow:setup` run on this repo; two runbooks added (trials, release) |
 | 7. README is the guide | ✅ | Sections: install (incl. work accounts), set up a project, the skills, lifecycle (mermaid), status block, criteria, roadmap and backlog, runbooks, how the process improves itself (with sources), worktrees, gotchas, personal rules, developing, license. Skill names, setup's file list and the template content match the files in `plugins/workflow/` |
-| 8. Published | ⚠️ after merge | Push, tag `v0.1.0`, `claude plugin marketplace add PatrickSouthern/claude-workflow` from GitHub |
+| 8. Published | ✅ | `main` and tag `v0.1.0` pushed (`refs/tags/v0.1.0^{}` = `5908420`). Local marketplace removed, then `claude plugin marketplace add PatrickSouthern/claude-workflow`: "Cloning via HTTPS … ✔ Successfully added marketplace"; `✔ Successfully installed plugin: workflow@claude-workflow (scope: user)`; `marketplace list`: `Source: GitHub (PatrickSouthern/claude-workflow)`; `details`: `workflow 0.1.0`, Skills (6) |
 
 **Needs manual check:**
 - In a real interactive session in a new project, run `/workflow:setup` and approve the

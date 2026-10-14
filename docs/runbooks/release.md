@@ -1,7 +1,7 @@
 # Release a new plugin version
 
 **Use when:** a merged change to `plugins/workflow/` should reach installed users
-**Last verified:** not yet (first run in task 001, after merge)
+**Last verified:** 2026-10-13 (task 001, v0.1.0)
 
 ## Prerequisites
 - Claude Code CLI on PATH; push access to github.com/PatrickSouthern/claude-workflow
