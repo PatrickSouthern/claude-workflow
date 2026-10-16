@@ -1,10 +1,10 @@
 # 004 — Phase 0 process review
 
-**Status:** Awaiting review — criteria 1–3 pass; 4 (0.1.3 release) after merge
+**Status:** Awaiting review — merged (f4ed42c), v0.1.3 tagged and pushed; all criteria pass
 **Last updated:** 2026-10-15
-**Next step:** User review; on "merge", run workflow:merge-task, then tag v0.1.3 and push
+**Next step:** User marks Done (ends Phase 0)
 **Blockers:** none
-**Worktree:** `.claude/worktrees/004-phase0-review`, branch `worktree-004-phase0-review`
+**Worktree:** removed after merge
 
 ## Goal
 Close Phase 0 with a process review (`workflow:review-process`): judge each process change since
@@ -97,7 +97,7 @@ runbook's `Last verified` line changed since (`git status`).
 | 1. Every process-log row has a review result | ✅ | `PROCESS-LOG.md` diff: 6 of 10 rows **kept**/**changed** with one line of evidence each; the 4 "too early" rows (002 `.claude/` wording, 003 ×2, issue #1 rule) are left blank by design, listed as too early in this task's table |
 | 2. Approved findings applied, rejected ones recorded | ✅ | Decisions: F1–F5 all approved. Diff: F1 and F3 in `CLAUDE.md` + setup `CLAUDE-workflow.md` (+ `close-task` step 6), F2 `tools/run-trials.sh` + runbook + README + `CLAUDE.md`, F4 `BACKLOG.md` B4; four new `PROCESS-LOG.md` rows. F5: no change |
 | 3. Checks pass | ✅ | `wc -l CLAUDE.md` → `57`; `claude plugin validate` → `✔ Validation passed` twice; `sh tools/run-trials.sh <scratch>/trials004b` → `fresh exit=0`, `existing exit=0`, every line `ok`, exit code 0; generated `CLAUDE.md` 51 / 55 lines (was 49 / 53: the two new sentences) |
-| 4. Plugin-wide findings reach the plugin | ⚠️ after merge | F1 and F3 are in 0.1.3 (`plugin.json` `0.1.3`, CHANGELOG entry with what existing projects add). Released once tagged and pushed after merge |
+| 4. Plugin-wide findings reach the plugin | ✅ | F1 and F3 are in 0.1.3 (`plugin.json` `0.1.3`, CHANGELOG entry with what existing projects add). Merge `f4ed42c`; `* [new tag] v0.1.3 -> v0.1.3`; `main` `44fb002..f4ed42c`. In SnowVibes: `updated from 0.1.2 to 0.1.3 for scope user` and `… for scope project (…\worktrees\006-unity-mcp)`; the main-checkout project entry still 0.1.2 (same as with 0.1.2; release runbook Known problems) |
 
 **Needs manual check:**
 - Run `/doctor prompt-audit` for a second opinion on `CLAUDE.md` (F5)
