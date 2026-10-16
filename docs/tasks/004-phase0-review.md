@@ -109,6 +109,6 @@ runbook's `Last verified` line changed since (`git status`).
 
 | Lesson | Fix | Lives in | How we'll know it worked | Status |
 |---|---|---|---|---|
-| Stopping a background trial run left its scratch folder busy; the next run into the same folder failed with misleading cascading errors | Known problems row: after stopping a run, use a new scratch folder | `docs/runbooks/run-setup-trials.md` | No trial failure from a reused scratch folder in later tasks | proposed |
+| Stopping a background trial run left its scratch folder busy; the next run into the same folder failed with misleading cascading errors | Known problems row: after stopping a run, use a new scratch folder | `docs/runbooks/run-setup-trials.md` | No trial failure from a reused scratch folder in later tasks | applied |
 
 ## Follow-ups

@@ -25,5 +25,6 @@
 | `.claude/settings.json` not written | `.claude/` is a protected path: in `acceptEdits` mode its writes need a prompt, which a headless run can't show; allow rules don't help ([docs](https://code.claude.com/docs/en/permission-modes#protected-paths)) | Expected. The script checks the session proposed the content instead |
 | Trial session fails with a model error | A trial `settings.json` set a real key (`model`) to a fake value | Use only harmless keys (`env`) in trial fixtures |
 | "Refusing to run it — a worktree-isolated session's git operations must target its own worktree" | Worktree isolation can't verify a compound command that runs `sh` (the script runs git) | Use `tools/run-trials.sh` as one plain command |
+| `rm: … Device or resource busy`, then cascading `No such file` and `git diff` usage errors | A stopped run's leftovers still hold the scratch folder | After stopping a run, use a new scratch folder |
 | A failing trial looked like a pass | Output piped through `tail` or `grep` hides the exit code | Use `tools/run-trials.sh`, unpiped |
 | `--allowedTools Write(...)` ignored | Only `Edit(path)` rules apply to file writes | Use `Edit(path)` |
