@@ -18,7 +18,7 @@ Goal: a project where Claude can make changes and prove they work, without the u
 | 001 | [Workflow plugin v0.1](tasks/001-plugin-v0-1.md): plugin, marketplace, setup skill, README; validated and published | Done |
 | [002](tasks/002-patch-0-1-1.md) | 0.1.1 patch: correct the `.claude/` permission-prompt claim (B1) | Done |
 | [003](tasks/003-retro-guards-cause.md) | 0.1.2: retro fixes guard the cause, not the whole action (issue #1, from SnowVibes 006) | Done |
-| — | Process review for Phase 0 | Not started |
+| [004](tasks/004-phase0-review.md) | Process review for Phase 0 | In progress |
 
 ## Later phases
 Each ends with a process review.
