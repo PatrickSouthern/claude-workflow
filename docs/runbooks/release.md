@@ -1,7 +1,7 @@
 # Release a new plugin version
 
 **Use when:** a merged change to `plugins/workflow/` should reach installed users
-**Last verified:** 2026-10-13 (task 002, v0.1.1)
+**Last verified:** 2026-10-15 (task 003, v0.1.2)
 
 ## Prerequisites
 - Claude Code CLI on PATH; push access to github.com/PatrickSouthern/claude-workflow
@@ -29,3 +29,4 @@ CHANGELOG entry are reviewed with the change. Step 6 runs on `main` after the me
 | Symptom | Cause | Fix |
 |---|---|---|
 | Installed plugin stays on the old version | `marketplace update` only refreshes the catalog | Also run `claude plugin update workflow@claude-workflow` |
+| `plugin update` updates one install but `claude plugin list` still shows others on the old version | One install per scope, and a project's worktrees can have their own project-scope entries; auto-detect picks one (task 003 picked a SnowVibes worktree) | Check `claude plugin list` after updating; run `--scope user` too. For a stale entry that `--scope project` won't reach: unresolved, see task 003 |
