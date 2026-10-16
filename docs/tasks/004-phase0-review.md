@@ -1,8 +1,8 @@
 # 004 — Phase 0 process review
 
-**Status:** Awaiting review — merged (f4ed42c), v0.1.3 tagged and pushed; all criteria pass
+**Status:** Done — approved by user 2026-10-15; no open follow-ups
 **Last updated:** 2026-10-15
-**Next step:** User marks Done (ends Phase 0)
+**Next step:** none
 **Blockers:** none
 **Worktree:** removed after merge
 
