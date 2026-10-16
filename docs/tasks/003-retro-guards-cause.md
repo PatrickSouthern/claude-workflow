@@ -1,8 +1,8 @@
 # 003 — 0.1.2: retro fixes guard the cause
 
-**Status:** Awaiting review — merged (2bcd3d0), tagged v0.1.2 and pushed, issue #1 closed; SnowVibes main-checkout install still 0.1.1
+**Status:** Awaiting review — merged (2bcd3d0), v0.1.2 tagged and pushed, issue #1 closed, all SnowVibes installs at 0.1.2
 **Last updated:** 2026-10-15
-**Next step:** User decides how to update the SnowVibes main-checkout project-scope install; then user marks Done
+**Next step:** User marks Done
 **Blockers:** none
 **Worktree:** removed after merge
 
@@ -69,7 +69,7 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
 | 1. Skill says it | ✅ | `git diff main -- …/finish-task/SKILL.md`: step 5 adds "The fix guards the condition that caused the failure and is no broader than the evidence: rather than banning an action, make it safe (check the condition first, or ask). Ban it outright only when the condition can't be checked." |
 | 2. Template and README say it | ✅ | `git diff main`: setup `task-template.md` Retro intro and README "Fix with the strongest mechanism" each add "Guard the condition that caused the failure, not the whole action: ban an action only when the condition can't be checked."; Retro intro of `docs/tasks/_TEMPLATE.md` vs setup template → `retro intro: identical` |
 | 3. Released as 0.1.2 | ✅ | `plugin.json` `"version": "0.1.2"`; CHANGELOG 0.1.2 entry names the change and the line existing projects add; `claude plugin validate` → `✔ Validation passed` twice; trials `fresh exit=0`, `existing exit=0`, every summary line `ok` (besides the `CLAUDE.md: N lines` info line) |
-| 4. Reaches SnowVibes | ⚠️ | Tag `v0.1.2` pushed (`* [new tag] v0.1.2 -> v0.1.2`, `main` `0e24a23..3ac2fa4`). In SnowVibes: `Plugin "workflow" updated from 0.1.1 to 0.1.2 for scope project (…\SnowVibes\.claude\worktrees\006-unity-mcp)`; `--scope user` → `updated from 0.1.1 to 0.1.2 for scope user`. Issue #1 → `CLOSED` with a link to `2bcd3d0`. **Open:** the project-scope entry for the main SnowVibes checkout is still 0.1.1 (`claude plugin list`); `--scope project` resolves to the worktree's entry ("already at the latest version") |
+| 4. Reaches SnowVibes | ✅ | Later: `claude plugin list` in SnowVibes shows all three installs at `0.1.2`; `installed_plugins.json` entry `projectPath: c:\Users\patri\code\SnowVibes` → `"version": "0.1.2"`, `lastUpdated` 01:52:41Z (updated outside this session). Earlier: | Tag `v0.1.2` pushed (`* [new tag] v0.1.2 -> v0.1.2`, `main` `0e24a23..3ac2fa4`). In SnowVibes: `Plugin "workflow" updated from 0.1.1 to 0.1.2 for scope project (…\SnowVibes\.claude\worktrees\006-unity-mcp)`; `--scope user` → `updated from 0.1.1 to 0.1.2 for scope user`. Issue #1 → `CLOSED` with a link to `2bcd3d0`. **Open:** the project-scope entry for the main SnowVibes checkout is still 0.1.1 (`claude plugin list`); `--scope project` resolves to the worktree's entry ("already at the latest version") |
 
 **Needs manual check:**
 - none (criterion 4 runs after merge)
