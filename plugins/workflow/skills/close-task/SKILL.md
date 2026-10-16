@@ -17,4 +17,5 @@ Run only when the user says the task is Done. Work in the main checkout on `main
 5. **Roadmap:** the task's row becomes `Done`. Rows for future work that now covers a backlog
    entry name it, e.g. "(B5)". If this was the last task of a phase, remind the user that the
    phase ends with a process review (`workflow:review-process`).
-6. **Commit** on `main`. Pushing needs the user's OK.
+6. **Commit** on `main`. Pushing needs the user's OK; an OK given earlier in this task's close-out
+   covers it.

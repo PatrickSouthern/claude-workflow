@@ -252,7 +252,8 @@ This repo uses its own workflow: see [CLAUDE.md](CLAUDE.md), [docs/ROADMAP.md](d
 - Load the working copy for one session: `claude --plugin-dir ./plugins/workflow`, and
   `/reload-plugins` after edits.
 - Validate: `claude plugin validate ./plugins/workflow` and `claude plugin validate .`
-- Trial the setup skill: `sh tools/trial-setup.sh <scratch dir> fresh|existing`
+- Trial the setup skill: `sh tools/run-trials.sh <scratch dir>` (both trials; one:
+  `sh tools/trial-setup.sh <scratch dir> fresh|existing`)
   ([runbook](docs/runbooks/run-setup-trials.md)).
 - Release: [docs/runbooks/release.md](docs/runbooks/release.md).
 

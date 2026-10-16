@@ -18,14 +18,16 @@ over conversation memory: read it first to resume. Each step has a skill in the 
 Always:
 - No changes before the user approves the plan; a material change to the plan needs approval again.
 - Implement in the task's own worktree, never on `main`; its task file is the live copy. Never edit
-  another task's files or branch. Only the main checkout creates task files.
+  another task's files or branch. Only the main checkout creates task files. Trivial changes and
+  post-merge records (release evidence, runbook rows) go straight to `main`.
 - Keep the status block current (step changes, blocked, before ending a turn) so a fresh session can
   resume from it alone. Format exactly `**Status:** <value> — <detail>`; values `Planned`,
   `In progress`, `Blocked`, `Awaiting review`, `Done`, `Abandoned` (with the reason).
 - Log decisions as they are made: date, decision, alternatives, why. Keep the roadmap row in step.
 - Never mark a criterion passed without evidence.
 - Out-of-scope work goes under Follow-ups, never into the open task.
-- Only the user merges or marks a task Done. Pushing needs the user's OK.
+- Only the user merges or marks a task Done. Pushing needs the user's OK; one OK covers the rest of
+  that task's close-out (through Done), not later tasks.
 
 **Capture lessons when they happen.** When the user corrects how you work, the same kind of failure
 happens twice, or the workflow or tools surprise you, add a Retro item to the current task right away

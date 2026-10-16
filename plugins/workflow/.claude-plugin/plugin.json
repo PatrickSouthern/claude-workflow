@@ -1,7 +1,7 @@
 {
   "name": "workflow",
   "description": "Plan, approve, implement in worktrees, verify with evidence, and improve the process from every task.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "Patrick Southern"
   },

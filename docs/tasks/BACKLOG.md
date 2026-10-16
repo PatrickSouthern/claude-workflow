@@ -12,7 +12,8 @@ them to Closed with the task number.
 - [ ] **B3 — Plugin evals** · from 001 · when: a few real tasks have given cases to test
   `claude plugin eval` scores whether the skills change Claude's behavior, for example that
   `finish-task` never marks ✅ without evidence.
-- [ ] **B4 — Hooks for the workflow** · from 001 · when: the first process review
+- [ ] **B4 — Hooks for the workflow** · from 001 · when: the first failure a hook would catch (004
+  review: none in Phase 0; every status line kept its format)
   Candidates for the top of the mechanism ladder, such as a check that every task file's status line
   keeps the grep-able format.
 

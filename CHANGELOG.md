@@ -3,6 +3,17 @@
 All notable changes to the `workflow` plugin. Versions follow semver: a breaking change to skill
 names, templates or `setup` output is a major version.
 
+## 0.1.3 — 2026-10-15
+
+From the first process review (task 004).
+
+- "How we work" (written by `setup`): trivial changes and post-merge records (release evidence,
+  runbook rows) go straight to `main`; one OK to push covers the rest of that task's close-out.
+  `close-task` says the same about pushing.
+- Existing projects: `setup` never overwrites `CLAUDE.md`, so add the two sentences to your "How we
+  work" section yourself, after "Only the main checkout creates task files." and after "Pushing
+  needs the user's OK" respectively.
+
 ## 0.1.2 — 2026-10-15
 
 - Retro fixes guard the condition that caused a failure instead of banning the whole action, and are
