@@ -24,4 +24,5 @@ workflow plugin.
 | 2026-10-15 | 004 review | Trivial changes and post-merge records go straight to `main` | `CLAUDE.md` rule + setup template (0.1.3) | Post-merge records land on `main` without a correction or a separate task | |
 | 2026-10-15 | 004 review | One OK to push covers the rest of a task's close-out | `CLAUDE.md` rule + setup template + `close-task` (0.1.3) | A task's close-out asks to push at most once | |
 | 2026-10-15 | 004 review | Hooks (B4) wait for a failure a hook would catch, not a date | backlog | B4 is picked up only with a named failure as its evidence | |
+| 2026-10-15 | prompt audit | `merge-task` push rule aligned with the one-OK close-out rule | skill (`merge-task`, 0.1.4) | Merge close-outs ask to push at most once | |
 | 2026-10-15 | 004 retro | After stopping a trial run, use a new scratch folder | runbook (`run-setup-trials.md`) | No trial failure from a reused scratch folder in later tasks | |

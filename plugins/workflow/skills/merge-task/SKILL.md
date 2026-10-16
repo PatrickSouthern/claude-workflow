@@ -26,5 +26,5 @@ Run only on the user's explicit word ("merge"). The task must be `Awaiting revie
    held by a shell's working directory; remove it once nothing is in it.
 6. **Status block** on `main`: `**Status:** Awaiting review — merged to main (<commit>); <checks>`,
    next step "User marks Done". Commit on `main`.
-7. **Ask before anything outward:** pushing `main` and deleting the remote branch each need the
-   user's OK.
+7. **Ask before anything outward:** pushing `main` and deleting the remote branch need the user's
+   OK; an OK given earlier in this task's close-out covers them.

@@ -3,6 +3,12 @@
 All notable changes to the `workflow` plugin. Versions follow semver: a breaking change to skill
 names, templates or `setup` output is a major version.
 
+## 0.1.4 — 2026-10-15
+
+- `merge-task` step 7 matches `close-task` and "How we work": an OK to push given earlier in a
+  task's close-out covers the merge's pushes too (found by `/doctor prompt-audit`).
+- `finish-task`: line wrapping only. Nothing to do for existing projects.
+
 ## 0.1.3 — 2026-10-15
 
 From the first process review (task 004).
