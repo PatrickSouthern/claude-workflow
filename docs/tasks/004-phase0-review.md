@@ -1,8 +1,8 @@
 # 004 — Phase 0 process review
 
-**Status:** In progress — worktree 004-phase0-review
+**Status:** Awaiting review — criteria 1–3 pass; 4 (0.1.3 release) after merge
 **Last updated:** 2026-10-15
-**Next step:** Plan step 2: fill in process-log review results
+**Next step:** User review; on "merge", run workflow:merge-task, then tag v0.1.3 and push
 **Blockers:** none
 **Worktree:** `.claude/worktrees/004-phase0-review`, branch `worktree-004-phase0-review`
 
@@ -32,10 +32,10 @@ rules that cost more than they give.
       released in this repo (it is the plugin's home) or listed as a follow-up with its version*
 
 ## Plan
-- [ ] 1. Commit this plan and the roadmap row; create the worktree.
-- [ ] 2. Fill in review results for every process-log row (table below).
-- [ ] 3. Apply each approved finding; log each in `PROCESS-LOG.md`.
-- [ ] 4. Ask the user to run `/doctor prompt-audit` for a second opinion on `CLAUDE.md`.
+- [x] 1. Commit this plan and the roadmap row; create the worktree.
+- [x] 2. Fill in review results for every process-log row (table below).
+- [x] 3. Apply each approved finding; log each in `PROCESS-LOG.md`.
+- [x] 4. Ask the user to run `/doctor prompt-audit` for a second opinion on `CLAUDE.md`.
 - [ ] 5. Verify, hand off with `workflow:finish-task`.
 
 ### Process-log review (step 1 of the checklist)
@@ -78,15 +78,29 @@ work", so they help every project; this repo is the plugin's home, so they ship 
   setup template's "How we work"; no skill names, steps or `setup` output structure change.
 
 ## Log
+- 2026-10-15 — F2: `tools/run-trials.sh` written; README, `CLAUDE.md` and the trials runbook point
+  to it. F1/F3: one sentence each in `CLAUDE.md` and the setup template; `close-task` step 6 matches
+  F3. F4: B4 trigger changed. 0.1.3 bump and CHANGELOG entry.
+- Rows with no evidence yet stay blank in `PROCESS-LOG.md` (header says so) so the next review picks
+  them up; "too early" is recorded in this task's table only.
+- First trial run started before the setup-template edit; stopped it. The next run into the same
+  scratch folder failed at once (`rm: … Device or resource busy`, then cascading errors): the stopped
+  run's leftovers. A run in a new folder passed. See Retro.
 
 ## Verification
 
+Validation and trials ran after the last plugin or template edit; only this task file and the trials
+runbook's `Last verified` line changed since (`git status`).
+
 | Criterion | Result | Evidence |
 |---|---|---|
-| | | |
+| 1. Every process-log row has a review result | ✅ | `PROCESS-LOG.md` diff: 6 of 10 rows **kept**/**changed** with one line of evidence each; the 4 "too early" rows (002 `.claude/` wording, 003 ×2, issue #1 rule) are left blank by design, listed as too early in this task's table |
+| 2. Approved findings applied, rejected ones recorded | ✅ | Decisions: F1–F5 all approved. Diff: F1 and F3 in `CLAUDE.md` + setup `CLAUDE-workflow.md` (+ `close-task` step 6), F2 `tools/run-trials.sh` + runbook + README + `CLAUDE.md`, F4 `BACKLOG.md` B4; four new `PROCESS-LOG.md` rows. F5: no change |
+| 3. Checks pass | ✅ | `wc -l CLAUDE.md` → `57`; `claude plugin validate` → `✔ Validation passed` twice; `sh tools/run-trials.sh <scratch>/trials004b` → `fresh exit=0`, `existing exit=0`, every line `ok`, exit code 0; generated `CLAUDE.md` 51 / 55 lines (was 49 / 53: the two new sentences) |
+| 4. Plugin-wide findings reach the plugin | ⚠️ after merge | F1 and F3 are in 0.1.3 (`plugin.json` `0.1.3`, CHANGELOG entry with what existing projects add). Released once tagged and pushed after merge |
 
 **Needs manual check:**
-- `/doctor prompt-audit` output (run by the user)
+- Run `/doctor prompt-audit` for a second opinion on `CLAUDE.md` (F5)
 
 ## Backlog items covered
 - B4 — trigger revised (F4), entry stays open
@@ -95,5 +109,6 @@ work", so they help every project; this repo is the plugin's home, so they ship 
 
 | Lesson | Fix | Lives in | How we'll know it worked | Status |
 |---|---|---|---|---|
+| Stopping a background trial run left its scratch folder busy; the next run into the same folder failed with misleading cascading errors | Known problems row: after stopping a run, use a new scratch folder | `docs/runbooks/run-setup-trials.md` | No trial failure from a reused scratch folder in later tasks | proposed |
 
 ## Follow-ups
