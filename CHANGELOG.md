@@ -3,6 +3,17 @@
 All notable changes to the `workflow` plugin. Versions follow semver: a breaking change to skill
 names, templates or `setup` output is a major version.
 
+## 0.1.5 — 2026-10-15
+
+From the SnowVibes Phase 0 review ([#2](https://github.com/PatrickSouthern/claude-workflow/issues/2)).
+
+- `finish-task` step 2: a task that adds or changes a check runs it once against a deliberate
+  failure and quotes that output. Manual checks are marked "before merge" unless they need the merge.
+- `finish-task` step 9: the hand-off asks the user to run the "before merge" manual checks now, so
+  they don't cost a round trip after the merge.
+- `merge-task` step 5: an empty worktree folder may be held by a shell or another program, such as
+  an editor. Nothing to do for existing projects.
+
 ## 0.1.4 — 2026-10-15
 
 - `merge-task` step 7 matches `close-task` and "How we work": an OK to push given earlier in a

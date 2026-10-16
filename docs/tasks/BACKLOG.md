@@ -7,6 +7,8 @@ them to Closed with the task number.
 ## Open
 
 - [ ] **B2 — Negative test for the setup trials** · from 001 retro · when: the next change to `setup`'s behavior
+  (0.1.5, issue #2: `finish-task` now requires a deliberate-failure run when a check changes, so the
+  next change to `tools/trial-setup.sh` brings this in.)
   Add a `--check-only` mode to `tools/trial-setup.sh` and a deliberate-failure run that must print
   `FAIL` and exit 1.
 - [ ] **B3 — Plugin evals** · from 001 · when: a few real tasks have given cases to test

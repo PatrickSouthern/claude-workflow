@@ -25,4 +25,6 @@ workflow plugin.
 | 2026-10-15 | 004 review | One OK to push covers the rest of a task's close-out | `CLAUDE.md` rule + setup template + `close-task` (0.1.3) | A task's close-out asks to push at most once | |
 | 2026-10-15 | 004 review | Hooks (B4) wait for a failure a hook would catch, not a date | backlog | B4 is picked up only with a named failure as its evidence | |
 | 2026-10-15 | prompt audit | `merge-task` push rule aligned with the one-OK close-out rule | skill (`merge-task`, 0.1.4) | Merge close-outs ask to push at most once | |
+| 2026-10-15 | issue #2 (SnowVibes review) | A new or changed check gets a deliberate-failure run | skill (`finish-task`, 0.1.5) | The next task that adds a check has a deliberate-failure run in its Verification | |
+| 2026-10-15 | issue #2 (SnowVibes review) | Hand-off asks for "before merge" manual checks | skill (`finish-task`, 0.1.5) | No manual check that could run before the merge waits until after it | |
 | 2026-10-15 | 004 retro | After stopping a trial run, use a new scratch folder | runbook (`run-setup-trials.md`) | No trial failure from a reused scratch folder in later tasks | |

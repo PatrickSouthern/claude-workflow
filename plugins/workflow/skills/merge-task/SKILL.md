@@ -22,8 +22,9 @@ Run only on the user's explicit word ("merge"). The task must be `Awaiting revie
    one can't be checked in this session, say so and leave it ⚠️ for the next one.
 5. **Remove the worktree and branch.** `git worktree remove`, then `git branch -d`. If the worktree
    is `locked` by a process that no longer exists (a crashed session), the lock is stale: use
-   `git worktree remove -f -f` once the branch is merged. An empty folder left behind is usually
-   held by a shell's working directory; remove it once nothing is in it.
+   `git worktree remove -f -f` once the branch is merged. An empty folder left behind is held by a
+   shell or another program (for example an editor) that still has it open; remove it once it is
+   released.
 6. **Status block** on `main`: `**Status:** Awaiting review — merged to main (<commit>); <checks>`,
    next step "User marks Done". Commit on `main`.
 7. **Ask before anything outward:** pushing `main` and deleting the remote branch need the user's

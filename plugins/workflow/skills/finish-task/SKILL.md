@@ -15,7 +15,9 @@ Work in the task's worktree, on its task branch. The task file there is the live
    the evidence (command and its output, test summary, log lines). No evidence, no ✅. A criterion
    that can only be checked after merge is ⚠️ with "after merge" and how it will be checked. What
    can't be checked from here goes under "Needs manual check", phrased as an instruction the user
-   can follow. Run multi-command checks from a script file in the session's scratchpad, not as one
+   can follow and marked "before merge" unless it needs the merge. When the task adds or changes a
+   check (a script, or a test that guards a rule), run it once against a deliberate failure, quote
+   that output too, then remove the failure. Run multi-command checks from a script file in the session's scratchpad, not as one
    long inline command: worktree isolation refuses compound commands it can't verify. Export
    anything needed from `main` first with a single plain `git show main:<path>`.
 3. **Fix or report failures.** A ❌ is either fixed and re-verified, or reported plainly in the
@@ -36,5 +38,6 @@ Work in the task's worktree, on its task branch. The task file there is the live
 7. **Status block.** `**Status:** Awaiting review — <one-line result>`, today's date, next step
    ("User review; on 'merge', run workflow:merge-task"), blockers.
 8. **Commit** the task branch.
-9. **Report to the user**: criteria results (with any ❌ or ⚠️ called out), manual checks, the
-   proposed retro items for approval, and follow-ups. Then stop.
+9. **Report to the user**: criteria results (with any ❌ or ⚠️ called out), manual checks (ask the
+   user to run the "before merge" ones now), the proposed retro items for approval, and follow-ups.
+   Then stop.
