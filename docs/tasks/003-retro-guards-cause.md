@@ -1,8 +1,8 @@
 # 003 — 0.1.2: retro fixes guard the cause
 
-**Status:** Awaiting review — merged (2bcd3d0), v0.1.2 tagged and pushed, issue #1 closed, all SnowVibes installs at 0.1.2
+**Status:** Done — approved by user 2026-10-15; no open follow-ups
 **Last updated:** 2026-10-15
-**Next step:** User marks Done
+**Next step:** none
 **Blockers:** none
 **Worktree:** removed after merge
 
