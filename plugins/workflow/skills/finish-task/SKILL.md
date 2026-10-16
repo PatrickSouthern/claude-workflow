@@ -23,7 +23,10 @@ Work in the task's worktree, on its task branch. The task file there is the live
 5. **Complete the Retro.** Look back over the task: where did the user correct how you worked? What
    failed twice? What in the workflow or tools surprised you or cost time? Keep at most 3 items. Each
    names the fix, where it lives (prefer, in order: hook, script/test, template, skill, runbook,
-   `CLAUDE.md` rule, workflow plugin), and how we'll know it worked. A lesson about the workflow
+   `CLAUDE.md` rule, workflow plugin), and how we'll know it worked. The fix guards the condition
+   that caused the failure and is no broader than the evidence: rather than banning an action, make
+   it safe (check the condition first, or ask). Ban it outright only when the condition can't be
+   checked. A lesson about the workflow
    itself (it would help every project) lives in the workflow plugin: the fix is to propose it there.
    Status `proposed`. "Nothing to change" is a valid retro. Don't apply the fixes yet: the user
    approves them with the task.

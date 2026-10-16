@@ -1,8 +1,8 @@
 # 003 — 0.1.2: retro fixes guard the cause
 
-**Status:** In progress — worktree 003-retro-guards-cause
+**Status:** Awaiting review — criteria 1–3 pass; 4 runs after merge
 **Last updated:** 2026-10-15
-**Next step:** Plan step 2: edit `finish-task` step 5, the templates and the README
+**Next step:** User review; on "merge", run workflow:merge-task, then tag, push (user's OK), update SnowVibes, close issue #1
 **Blockers:** none
 **Worktree:** `.claude/worktrees/003-retro-guards-cause`, branch `worktree-003-retro-guards-cause`
 
@@ -35,9 +35,9 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
 
 ## Plan
 - [x] 1. Commit this plan and the roadmap row to `main`; create the worktree `003-retro-guards-cause`.
-- [ ] 2. Edit `finish-task` step 5, the setup task template, this repo's `_TEMPLATE.md`, and the README.
-- [ ] 3. Bump to 0.1.2 and add the CHANGELOG entry (release runbook steps 1–3).
-- [ ] 4. Validate and run the setup trials (runbook steps 4–5).
+- [x] 2. Edit `finish-task` step 5, the setup task template, this repo's `_TEMPLATE.md`, and the README.
+- [x] 3. Bump to 0.1.2 and add the CHANGELOG entry (release runbook steps 1–3).
+- [x] 4. Validate and run the setup trials (runbook steps 4–5).
 - [ ] 5. Hand off with `workflow:finish-task`; after "merge": tag, push (user's OK), update the plugin in
       SnowVibes, close issue #1.
 
@@ -54,15 +54,21 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
 - **2026-10-15 — Plan approved** by the user as written, no changes.
 
 ## Log
+- 2026-10-15 — Edits made as planned; template and README use the one-line form of the rule.
+  Validation passed twice; both setup trials exit 0. The worktree-isolation guard refused a single
+  compound Bash command (mkdir + both trials + cat); split into plain commands, which ran.
 
 ## Verification
 
 | Criterion | Result | Evidence |
 |---|---|---|
-| | | |
+| 1. Skill says it | ✅ | `git diff main -- …/finish-task/SKILL.md`: step 5 adds "The fix guards the condition that caused the failure and is no broader than the evidence: rather than banning an action, make it safe (check the condition first, or ask). Ban it outright only when the condition can't be checked." |
+| 2. Template and README say it | ✅ | `git diff main`: setup `task-template.md` Retro intro and README "Fix with the strongest mechanism" each add "Guard the condition that caused the failure, not the whole action: ban an action only when the condition can't be checked."; Retro intro of `docs/tasks/_TEMPLATE.md` vs setup template → `retro intro: identical` |
+| 3. Released as 0.1.2 | ✅ | `plugin.json` `"version": "0.1.2"`; CHANGELOG 0.1.2 entry names the change and the line existing projects add; `claude plugin validate` → `✔ Validation passed` twice; trials `fresh exit=0`, `existing exit=0`, every summary line `ok` (besides the `CLAUDE.md: N lines` info line) |
+| 4. Reaches SnowVibes | ⚠️ after merge | Tag `v0.1.2` and push (user's OK); in SnowVibes `claude plugin update workflow@claude-workflow` → "updated from 0.1.1 to 0.1.2"; close issue #1 with a link to the commit |
 
 **Needs manual check:**
-- none expected
+- none (criterion 4 runs after merge)
 
 ## Backlog items covered
 - none (issue #1)
@@ -71,5 +77,7 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
 
 | Lesson | Fix | Lives in | How we'll know it worked | Status |
 |---|---|---|---|---|
+| Worktree isolation refused the setup trials run as one compound command during implementation; `finish-task` step 2 says to use a script file, but trials also run before hand-off | Add a step note and a Known problems row: in a worktree session, run the trials as separate plain commands or from a script file | `docs/runbooks/run-setup-trials.md` | Next task that runs trials from a worktree gets no isolation refusal | proposed |
+| At hand-off both trials ran again (about 5 min, the user noticed) though no file they cover changed since they passed earlier in the session | `finish-task` step 2: a check run earlier may stand as evidence when no file it covers has changed since (show `git diff --stat` since that run); otherwise re-run it | Workflow plugin (`finish-task`), as a backlog entry for the next release | Next hand-off reuses an unchanged earlier result instead of re-running it | proposed |
 
 ## Follow-ups
