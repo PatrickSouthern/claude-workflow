@@ -22,3 +22,6 @@ Goal: a project where Claude can make changes and prove they work, without the u
 
 ## Later phases
 Each ends with a process review.
+
+**Paused (2026-10-15):** no Phase 1 until real use (SnowVibes and other projects) gives more data.
+Pick up from issues raised there and the open backlog (B2, B3, B4).
