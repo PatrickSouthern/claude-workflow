@@ -47,7 +47,8 @@ Lessons about the way of working, not about the project: at most 3. Add one as s
 (the user corrects how Claude works, the same kind of failure happens twice, a surprise in the
 workflow or tools); complete them at hand-off. The user approves them with the task.
 Prefer the strongest fix: a check that runs (hook, script, test) over a template or skill, over a
-written rule. "Nothing to change" is a valid retro.
+written rule. Guard the condition that caused the failure, not the whole action: ban an action only
+when the condition can't be checked. "Nothing to change" is a valid retro.
 
 | Lesson | Fix | Lives in | How we'll know it worked | Status |
 |---|---|---|---|---|

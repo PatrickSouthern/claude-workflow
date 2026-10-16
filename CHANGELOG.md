@@ -3,6 +3,18 @@
 All notable changes to the `workflow` plugin. Versions follow semver: a breaking change to skill
 names, templates or `setup` output is a major version.
 
+## 0.1.2 — 2026-10-15
+
+- Retro fixes guard the condition that caused a failure instead of banning the whole action, and are
+  no broader than the evidence; an action is banned outright only when the condition can't be
+  checked. Said in `finish-task` step 5, the task template's Retro intro and the README
+  ([#1](https://github.com/PatrickSouthern/claude-workflow/issues/1)).
+- `finish-task` step 2: a slow check that already passed in the session needn't run again at hand-off
+  when its output is on hand and no file it covers has changed since.
+- Existing projects: `setup` never overwrites your task template, so add the line to the Retro intro
+  of your `docs/tasks/_TEMPLATE.md` yourself: "Guard the condition that caused the failure, not the
+  whole action: ban an action only when the condition can't be checked."
+
 ## 0.1.1 — 2026-10-13
 
 - `setup` and the README no longer claim Claude Code always asks before writing `.claude/settings.json`.

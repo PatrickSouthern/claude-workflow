@@ -155,7 +155,8 @@ correct how Claude works; the same kind of failure happens twice; the workflow o
 Claude or cost time. With no task open, the lesson becomes a backlog entry.
 
 **Fix with the strongest mechanism.** Each retro item (at most three per task) names its fix, where
-it lives, and how we'll know it worked. Prefer, in this order:
+it lives, and how we'll know it worked. Guard the condition that caused the failure, not the whole
+action: ban an action only when the condition can't be checked. Prefer, in this order:
 
 | Mechanism | Example | Why this rank |
 |---|---|---|

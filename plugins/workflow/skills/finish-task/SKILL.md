@@ -9,7 +9,9 @@ Work in the task's worktree, on its task branch. The task file there is the live
 
 1. **Re-read the task file** from the top: goal, criteria, plan, decisions. Tick finished plan steps.
 2. **Verify each criterion** by running its stated check now, not from memory of an earlier run.
-   Fill in the Verification table: ✅ / ❌ / ⚠️ and the evidence (command and its output, test
+   A slow check (a long build or test run) that already passed in this session needn't run again
+   if its output is still on hand to quote and `git status` and `git diff --stat` show no file it
+   covers changed since; say so in the evidence. Fill in the Verification table: ✅ / ❌ / ⚠️ and the evidence (command and its output, test
    summary, log lines). No evidence, no ✅. A criterion that can only be checked after merge is ⚠️
    with "after merge" and how it will be checked. What can't be checked from here goes under
    "Needs manual check", phrased as an instruction the user can follow. Run multi-command checks
@@ -23,7 +25,10 @@ Work in the task's worktree, on its task branch. The task file there is the live
 5. **Complete the Retro.** Look back over the task: where did the user correct how you worked? What
    failed twice? What in the workflow or tools surprised you or cost time? Keep at most 3 items. Each
    names the fix, where it lives (prefer, in order: hook, script/test, template, skill, runbook,
-   `CLAUDE.md` rule, workflow plugin), and how we'll know it worked. A lesson about the workflow
+   `CLAUDE.md` rule, workflow plugin), and how we'll know it worked. The fix guards the condition
+   that caused the failure and is no broader than the evidence: rather than banning an action, make
+   it safe (check the condition first, or ask). Ban it outright only when the condition can't be
+   checked. A lesson about the workflow
    itself (it would help every project) lives in the workflow plugin: the fix is to propose it there.
    Status `proposed`. "Nothing to change" is a valid retro. Don't apply the fixes yet: the user
    approves them with the task.
