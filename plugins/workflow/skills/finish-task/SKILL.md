@@ -9,7 +9,9 @@ Work in the task's worktree, on its task branch. The task file there is the live
 
 1. **Re-read the task file** from the top: goal, criteria, plan, decisions. Tick finished plan steps.
 2. **Verify each criterion** by running its stated check now, not from memory of an earlier run.
-   Fill in the Verification table: ✅ / ❌ / ⚠️ and the evidence (command and its output, test
+   A slow check (a long build or test run) that already passed in this session needn't run again
+   if its output is still on hand to quote and `git status` and `git diff --stat` show no file it
+   covers changed since; say so in the evidence. Fill in the Verification table: ✅ / ❌ / ⚠️ and the evidence (command and its output, test
    summary, log lines). No evidence, no ✅. A criterion that can only be checked after merge is ⚠️
    with "after merge" and how it will be checked. What can't be checked from here goes under
    "Needs manual check", phrased as an instruction the user can follow. Run multi-command checks

@@ -52,6 +52,10 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
   Why: SnowVibes 006 applied "never run tests through an open Editor" when the cause was unsaved
   scene changes; the user called it an overreach and it was narrowed the same day.
 - **2026-10-15 — Plan approved** by the user as written, no changes.
+- **2026-10-15 — Both retro items approved; the `finish-task` one ships in 0.1.2.** Alternatives: a
+  backlog entry for the next release. Why: the user said quick changes like these go straight in
+  rather than through a separate task; 0.1.2 isn't tagged yet. Skill text only, so
+  `claude plugin validate` reruns; the trials don't cover `finish-task`.
 
 ## Log
 - 2026-10-15 — Edits made as planned; template and README use the one-line form of the rule.
@@ -77,7 +81,7 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
 
 | Lesson | Fix | Lives in | How we'll know it worked | Status |
 |---|---|---|---|---|
-| Worktree isolation refused the setup trials run as one compound command during implementation; `finish-task` step 2 says to use a script file, but trials also run before hand-off | Add a step note and a Known problems row: in a worktree session, run the trials as separate plain commands or from a script file | `docs/runbooks/run-setup-trials.md` | Next task that runs trials from a worktree gets no isolation refusal | proposed |
-| At hand-off both trials ran again (about 5 min, the user noticed) though no file they cover changed since they passed earlier in the session | `finish-task` step 2: a check run earlier may stand as evidence when no file it covers has changed since (show `git diff --stat` since that run); otherwise re-run it | Workflow plugin (`finish-task`), as a backlog entry for the next release | Next hand-off reuses an unchanged earlier result instead of re-running it | proposed |
+| Worktree isolation refused the setup trials run as one compound command during implementation; `finish-task` step 2 says to use a script file, but trials also run before hand-off | Add a step note and a Known problems row: in a worktree session, run the trials as separate plain commands or from a script file | `docs/runbooks/run-setup-trials.md` | Next task that runs trials from a worktree gets no isolation refusal | applied |
+| At hand-off both trials ran again (about 5 min, the user noticed) though no file they cover changed since they passed earlier in the session | `finish-task` step 2: a check run earlier may stand as evidence when no file it covers has changed since (show `git diff --stat` since that run); otherwise re-run it | Workflow plugin (`finish-task` step 2), shipped in 0.1.2 | Next hand-off reuses an unchanged earlier result instead of re-running it | applied |
 
 ## Follow-ups
