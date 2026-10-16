@@ -1,10 +1,10 @@
 # 003 — 0.1.2: retro fixes guard the cause
 
-**Status:** Awaiting review — criteria 1–3 pass; 4 runs after merge
+**Status:** Awaiting review — merged to main (2bcd3d0); criterion 4 waits on tag and push
 **Last updated:** 2026-10-15
-**Next step:** User review; on "merge", run workflow:merge-task, then tag, push (user's OK), update SnowVibes, close issue #1
-**Blockers:** none
-**Worktree:** `.claude/worktrees/003-retro-guards-cause`, branch `worktree-003-retro-guards-cause`
+**Next step:** With the user's OK: tag `v0.1.2`, push `main` and the tag, update SnowVibes, close issue #1; then user marks Done
+**Blockers:** push needs the user's OK
+**Worktree:** removed after merge
 
 ## Goal
 Retro fixes target the condition that caused a failure instead of banning the whole action, so the
