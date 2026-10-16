@@ -1,10 +1,10 @@
 # 003 — 0.1.2: retro fixes guard the cause
 
-**Status:** Planned — awaiting approval
+**Status:** In progress — worktree 003-retro-guards-cause
 **Last updated:** 2026-10-15
-**Next step:** Get plan approved
+**Next step:** Plan step 2: edit `finish-task` step 5, the templates and the README
 **Blockers:** none
-**Worktree:** none yet (once approved: `.claude/worktrees/003-retro-guards-cause`, branch `worktree-003-retro-guards-cause`)
+**Worktree:** `.claude/worktrees/003-retro-guards-cause`, branch `worktree-003-retro-guards-cause`
 
 ## Goal
 Retro fixes target the condition that caused a failure instead of banning the whole action, so the
@@ -34,7 +34,7 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
       closed with a link to the commit*
 
 ## Plan
-- [ ] 1. Commit this plan and the roadmap row to `main`; create the worktree `003-retro-guards-cause`.
+- [x] 1. Commit this plan and the roadmap row to `main`; create the worktree `003-retro-guards-cause`.
 - [ ] 2. Edit `finish-task` step 5, the setup task template, this repo's `_TEMPLATE.md`, and the README.
 - [ ] 3. Bump to 0.1.2 and add the CHANGELOG entry (release runbook steps 1–3).
 - [ ] 4. Validate and run the setup trials (runbook steps 4–5).
@@ -51,6 +51,7 @@ process doesn't collect rules broader than their evidence. Proposed from SnowVib
   the condition can't be checked."
   Why: SnowVibes 006 applied "never run tests through an open Editor" when the cause was unsaved
   scene changes; the user called it an overreach and it was narrowed the same day.
+- **2026-10-15 — Plan approved** by the user as written, no changes.
 
 ## Log
 
